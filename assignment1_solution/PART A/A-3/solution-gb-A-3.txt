@@ -1,0 +1,21 @@
+Questions
+---------
+
+        1   Identify the basic blocks that correspond  to the while loop. How is
+            the GIMPLE for a while loop different from simple if-else jumps?
+
+        2   Identify the  basic blocks  for the nested  for-loop. You  should be
+            able  to identify  intializers, conditions  and increments  for each
+            loop as  well as  the shared  inner body.  Is there  really anything
+            special about a for-loop as compared to a while-loop?
+
+Answers
+---------
+
+	1    In this program blocks 4,3,2 correspond to the while loop. While
+	     -loop blocks have been written similar to if-else blocks but the
+	     order is backwards.
+	
+	2    In this program blocks 8,7,6 correspond to the nested for-loop. In
+	     GIMPLE there isnt any difference between the way of writing either
+	     of the loops. 

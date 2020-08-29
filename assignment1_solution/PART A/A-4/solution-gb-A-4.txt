@@ -1,0 +1,25 @@
+
+Questions
+---------
+
+        1   How is array declaration and initialization handled?
+
+        2   Why does the statement a[i] = b[i] get broken down to two steps with
+            an intermediate temporary?
+
+        3   Why are there CLOBBER statements at the end?
+
+
+Amswers
+--------
+
+	1   First arrays are declared, then for each element in the array,individual
+	    initialization takes place (as GIMPLE does 1 step at a time.)
+
+	
+	2   GIMPLE can perform 1 step at a time so first it can only read or write
+	    from the array memory (as to access arrays in constant time requires
+	    calculation) so it is stored as a temporary variable before performing
+            any other calculation. 
+
+	3    CLOBBER statments signify that the scope if this variable has ended

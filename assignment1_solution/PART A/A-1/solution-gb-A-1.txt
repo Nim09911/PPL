@@ -1,0 +1,44 @@
+Questions
+---------
+
+        1   How  do the  declarations  look in  the  GIMPLE? Specifically,  what
+            happens to multiple  variables declared and initialized  on the same
+            line? What happens to global declaration [int Z]?
+
+        2   How are complex  expressions such as [c  = a * b +  25] broken down?
+            Can you  determine a  rule as  to when  temporary variables  will be
+            introduced?
+
+        3   How are  floats/doubles represented in  GIMPLE? What happens  when a
+            float/double is assigned to an integer in [Z = r]?
+
+        4   How  are reads/writes  to the  global variable  Z performed?  Why is
+            there a temporary introduced  for the statement [Z = Z  + 1] but not
+            for the statements [q = Z] or [Z = p]?
+
+
+Answers
+---------
+
+	1    GIMPLE declartions are similar to that in C with the exception that 
+	     multiple declartions in one line for multiple variables of the same 
+	     type cannot be made; Each varible must be declared individually.
+	     However, global variables are not declared by directly used. Also
+	     GIMPLE only allows one operation at a time.
+
+	2    GIMPLE breaks down complex expressions, calculates and stores each 
+	     operation as a temporary variable except for the final and simple
+	     expression. Creating temporay variables for simple expressions just
+	     causes bloating, 
+
+	3    GIMPLE represents floats and doubles in the form of "scientific 
+	     numbers".
+
+	4    Since GIMPLE only allows one operation at a time we can directly 
+	     read and write but to perform further operations we must create a 
+	     temporary variable. This temporary variable first registers the
+	     global variable in the memory from the main memory, so that now
+	     procedures can be done on it in the defined scope. Global  
+	     temporaries are named similar to the global variable but with a 
+	     numeric suffix.
+	

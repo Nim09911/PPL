@@ -1,0 +1,31 @@
+
+;; Function main (main, funcdef_no=13, decl_uid=3219, cgraph_uid=13, symbol_order=13)
+
+main ()
+{
+  int b;
+  int a;
+  int D.3230;
+
+  a = 4;
+  goto <D.3224>;
+  <D.3223>:
+  if (a <= 3) goto <D.3227>; else goto <D.3228>;
+  <D.3227>:
+  b = b + 2;
+  goto <D.3229>;
+  <D.3228>:
+  b = b * 2;
+  <D.3229>:
+  a = a + 1;
+  <D.3224>:
+  if (a <= 99) goto <D.3223>; else goto <D.3225>;
+  <D.3225>:
+  printf ("%d%d", a, b);
+  D.3230 = 0;
+  goto <D.3231>;
+  <D.3231>:
+  return D.3230;
+}
+
+
